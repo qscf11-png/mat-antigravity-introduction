@@ -228,9 +228,9 @@ def main():
         Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
         "如何讓大家的 Antigravity 都套用此規範？",
         [
-            "• 方法 A ── 專案級 CLAUDE.md (最推薦！)：在專案根目錄下建立 CLAUDE.md 檔案，寫入這些開發偏好與常用命令。Antigravity 在解析工作區時會自動載入並 100% 遵守，極利於團隊協作分享。",
-            "• 方法 B ── 系統全域 User Rules 設定：直接在 Antigravity 客戶端設定的 User Rules (自訂規則) 欄位中貼上這些 Rules，即可跨專案自動套用您的個人開發偏好。",
-            "• 方法 C ── 全域組態設定檔：將 Rules 寫入個人 AppData 家目錄下的 Antigravity 全域組態設定檔中，讓每次啟動與執行時自動加載生效。"
+            "• 方法 A ── 專案級 GEMINI.md (最推薦！)：在專案根目錄下建立 GEMINI.md 檔案 (亦相容 CLAUDE.md)，寫入偏好命令。Antigravity 載入專案時會自動遵守，極利於團隊協作分享。",
+            "• 方法 B ── 全域級 GEMINI.md (一勞永逸！)：在個人家目錄的隱藏設定資料夾下，建立 C:\\Users\\<Username>\\.gemini\\GEMINI.md 檔案。此後全電腦所有專案都會自動套用此規則！",
+            "• 方法 C ── 系統 User Rules 設定：直接在 Antigravity 軟體設定的 User Rules 欄位中貼上這些 Rules，即可跨專案自動套用您的個人開發偏好。"
         ]
     )
 
@@ -373,7 +373,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction_v3.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v4.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 
