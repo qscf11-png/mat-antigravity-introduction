@@ -19,25 +19,21 @@ def main():
     COLOR_TEXT = RGBColor(0x33, 0x41, 0x55)       # #334155 (主要文字深灰藍)
     COLOR_WHITE = RGBColor(0xFF, 0xFF, 0xFF)      # 白色背景
     
-    # 3. 取得空白版面 (Layout 6 通常是無預設佔位符的空白版型)
+    # 3. 取得空白版面
     blank_layout = prs.slide_layouts[6]
     
     # ==================== SLIDE 1: 封面 (暗底) ====================
     slide1 = prs.slides.add_slide(blank_layout)
-    
-    # 設定暗底背景色
     background = slide1.background
     fill = background.fill
     fill.solid()
     fill.fore_color.rgb = COLOR_DARK_COVER
     
-    # 封面主要文字框
     cover_box = slide1.shapes.add_textbox(Inches(1.0), Inches(2.0), Inches(11.33), Inches(4.5))
     tf1 = cover_box.text_frame
     tf1.word_wrap = True
     tf1.margin_left = tf1.margin_right = tf1.margin_top = tf1.margin_bottom = 0
     
-    # 主標題
     p1 = tf1.paragraphs[0]
     p1.text = "Antigravity"
     p1.font.name = 'Abadi'
@@ -46,7 +42,6 @@ def main():
     p1.font.color.rgb = COLOR_WHITE
     p1.space_after = Pt(20)
     
-    # 副標題
     p2 = tf1.add_paragraph()
     p2.text = "引領 MAT 團隊的 Agentic AI 協作新時代"
     p2.font.name = '微軟正黑體'
@@ -55,7 +50,6 @@ def main():
     p2.font.color.rgb = COLOR_LIGHT_CARD
     p2.space_after = Pt(48)
     
-    # 署名
     p3 = tf1.add_paragraph()
     p3.text = "MAT 團隊分享會  |  2026.06.01"
     p3.font.name = 'Arial'
@@ -64,7 +58,6 @@ def main():
     
     # ==================== 共用元素生成函數 ====================
     def add_slide_decorations(slide, section_text, title_text):
-        # 設定白色底色背景 (防跑版)
         bg = slide.background
         bf = bg.fill
         bf.solid()
@@ -76,7 +69,7 @@ def main():
         )
         accent.fill.solid()
         accent.fill.fore_color.rgb = COLOR_TEAL_FILL
-        accent.line.fill.background() # 無邊框
+        accent.line.fill.background()
         
         # 2. Title: 頂邊界 0.45", 左邊界 0.9" (位於 Accent Bar 右側)
         title_box = slide.shapes.add_textbox(Inches(0.9), Inches(0.42), Inches(11.5), Inches(0.6))
@@ -115,7 +108,6 @@ def main():
 
     # ==================== 卡片加入函數 ====================
     def add_card(slide, left, top, width, height, title, content_lines):
-        # 卡片底色 (圓角矩形)
         card = slide.shapes.add_shape(
             MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height
         )
@@ -123,14 +115,12 @@ def main():
         card.fill.fore_color.rgb = COLOR_LIGHT_CARD
         card.line.fill.background()
         
-        # 文字方塊覆蓋在上面，提供完美的排版微調
         tb = slide.shapes.add_textbox(left + Inches(0.25), top + Inches(0.25), width - Inches(0.5), height - Inches(0.5))
         tf = tb.text_frame
         tf.word_wrap = True
         tf.vertical_anchor = MSO_ANCHOR.TOP
         tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
         
-        # 卡片標題
         p_title = tf.paragraphs[0]
         p_title.text = title
         p_title.font.name = '微軟正黑體'
@@ -139,7 +129,6 @@ def main():
         p_title.font.color.rgb = COLOR_TEAL_FILL
         p_title.space_after = Pt(14)
         
-        # 卡片內容
         for line in content_lines:
             p = tf.add_paragraph()
             p.text = line
@@ -234,116 +223,12 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 5: 5分鐘現場 Demo 流程 ====================
+    # ==================== SLIDE 5: 擴充功能分發與安裝指南 ====================
     slide5 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide5, "03 / 實戰展示", "Demo 現場：5分鐘見證 AI 自主開發")
-    
-    # 4個步驟小卡片
-    add_card(
-        slide5,
-        Inches(0.6), Inches(2.0), Inches(2.75), Inches(4.8),
-        "1. 引導對齊",
-        [
-            "輸入 /brainstorm 指令啟動需求對齊。",
-            "故意選擇「小白模式」，展示 AI 如何用大白話梳理需求、列出理解假設並提供方案比較表。"
-        ]
-    )
+    add_slide_decorations(slide5, "02 / 功能分發", "擴充功能分發與安裝指南")
     
     add_card(
         slide5,
-        Inches(3.6), Inches(2.0), Inches(2.75), Inches(4.8),
-        "2. 核准實作計畫",
-        [
-            "確認 AI 產出的實作計畫書無誤後，輸入「同意」一鍵核准執行。",
-            "AI 隨即生成 task.md 開始追蹤工作進度。"
-        ]
-    )
-    
-    add_card(
-        slide5,
-        Inches(6.6), Inches(2.0), Inches(2.75), Inches(4.8),
-        "3. 自律虛擬執行",
-        [
-            "AI 自動在背景使用 uv 建立虛擬環境、下載相依套件，並自力編寫核心代碼與 Error Handling。"
-        ]
-    )
-    
-    add_card(
-        slide5,
-        Inches(9.6), Inches(2.0), Inches(2.75), Inches(4.8),
-        "4. 成果驗證",
-        [
-            "AI 自動跑測試並撰寫 walkthrough.md，將成果與圖表以 Carousel 或 Markdown 完美打包呈獻給您。"
-        ]
-    )
-
-    # ==================== SLIDE 6: 動手前先想清楚：/brainstorm ====================
-    slide6 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide6, "04 / 亮點功能 01", "動手前先想清楚：/brainstorm")
-    
-    add_card(
-        slide6,
-        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
-        "🟢 小白模式 (推薦非技術同事)",
-        [
-            "• 成果導向：完全過濾艱澀的技術名詞。例如以「自動執行小程式」替代「Cron Job」。",
-            "• 專注價值：對話重點聚焦於「你能得到什麼」、「有什麼使用風險」以及「未來可以如何延伸」。",
-            "• 直觀對比：方案比較表簡化為優缺點、需要你配合做的事，讓決策輕鬆無負擔。"
-        ]
-    )
-    
-    add_card(
-        slide6,
-        Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
-        "🔴 工程師模式 (高效率開發)",
-        [
-            "• 技術對齊：直接探討檔案路徑、套件版本、API 串接細節與伺服器架構，絕不拖泥帶水。",
-            "• 極速開發：用最精簡的術語與 AI 同頻共振，快速切入代碼實作。",
-            "• 技術矩陣：方案比較表列出完整的技術棧對比、運作效能與工時預估。"
-        ]
-    )
-
-    # ==================== SLIDE 7: 打造 MAT 專屬的 AI 自動化工具庫 ====================
-    slide7 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide7, "05 / 亮點功能 02", "workflow-skill-creator：讓經驗重複使用")
-    
-    # 左側大卡片
-    add_card(
-        slide7,
-        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
-        "做過一次，學會一輩子",
-        [
-            "• 經驗資產化：當你與 AI 合作成功完成了一套繁琐的實驗數據清洗、報告生成或文件處理流程，直接對它說「把我們剛剛做的事情建立成一個 Skill」。",
-            "• 永久複用：AI 會將此流程提煉、打包成結構化的指令與指令腳本。下次只需一句話，AI 就能瞬間以完全相同的標準為您重複執行該任務。"
-        ]
-    )
-    
-    # 右上卡片
-    add_card(
-        slide7,
-        Inches(6.8), Inches(2.0), Inches(5.8), Inches(2.2),
-        "工業級防護護欄 ── Rate Limiting",
-        [
-            "• 自動實作指數退避 (Exponential Backoff)，呼叫內部系統 API 時不怕造成負載，安全防封鎖。"
-        ]
-    )
-    
-    # 右下卡片
-    add_card(
-        slide7,
-        Inches(6.8), Inches(4.6), Inches(5.8), Inches(2.2),
-        "跨進程鎖 ── File-lock 安全防衝突",
-        [
-            "• 多個 AI 協同運行時自動共用進程鎖，避免讀寫衝突與代碼覆寫，展現強健的開發品質。"
-        ]
-    )
-
-    # ==================== SLIDE 8: 擴充功能分發與安裝指南 ====================
-    slide8 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide8, "05 / 功能分發", "擴充功能分發與安裝指南")
-    
-    add_card(
-        slide8,
         Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
         "哪些功能需要分享檔案？",
         [
@@ -353,7 +238,7 @@ def main():
     )
     
     add_card(
-        slide8,
+        slide5,
         Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
         "分享來源與同仁貼上安裝路徑",
         [
@@ -364,12 +249,144 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 9: 如何與 AI 隊友愉快協作？ ====================
+    # ==================== SLIDE 6: 5分鐘現場 Demo 流程 ====================
+    slide6 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide6, "03 / 實戰展示", "Demo 現場：5分鐘見證 AI 自主開發")
+    
+    # 4個步驟小卡片
+    add_card(
+        slide6,
+        Inches(0.6), Inches(2.0), Inches(2.75), Inches(4.8),
+        "1. 引導對齊",
+        [
+            "輸入 /brainstorm 指令啟動需求對齊。",
+            "故意選擇「小白模式」，展示 AI 如何用大白話梳理需求、列出理解假設並提供方案比較表。"
+        ]
+    )
+    
+    add_card(
+        slide6,
+        Inches(3.6), Inches(2.0), Inches(2.75), Inches(4.8),
+        "2. 核准實作計畫",
+        [
+            "確認 AI 產出的實作計畫書無誤後，輸入「同意」一鍵核准執行。",
+            "AI 隨即生成 task.md 開始追蹤工作進度。"
+        ]
+    )
+    
+    add_card(
+        slide6,
+        Inches(6.6), Inches(2.0), Inches(2.75), Inches(4.8),
+        "3. 自律虛擬執行",
+        [
+            "AI 自動在背景使用 uv 建立虛擬環境、下載相依套件，並自力編寫核心代碼與 Error Handling。"
+        ]
+    )
+    
+    add_card(
+        slide6,
+        Inches(9.6), Inches(2.0), Inches(2.75), Inches(4.8),
+        "4. 成果驗證",
+        [
+            "AI 自動跑測試並撰寫 walkthrough.md，將成果與圖表以 Carousel 或 Markdown 完美打包呈獻給您。"
+        ]
+    )
+
+    # ==================== SLIDE 7: 動手前先想清楚：/brainstorm ====================
+    slide7 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide7, "04 / 亮點功能 01", "動手前先想清楚：/brainstorm")
+    
+    add_card(
+        slide7,
+        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
+        "🟢 小白模式 (推薦非技術同事)",
+        [
+            "• 成果導向：完全過濾艱澀的技術名詞。例如以「自動執行小程式」替代「Cron Job」。",
+            "• 專注價值：對話重點聚焦於「你能得到什麼」、「有什麼使用風險」以及「未來可以如何延伸」。",
+            "• 直觀對比：方案比較表簡化為優缺點、需要你配合做的事，讓決策輕鬆無負擔。"
+        ]
+    )
+    
+    add_card(
+        slide7,
+        Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
+        "🔴 工程師模式 (高效率開發)",
+        [
+            "• 技術對齊：直接探討檔案路徑、套件版本、API 串接細節與伺服器架構，絕不拖泥帶水。",
+            "• 極速開發：用最精簡的術語與 AI 同頻共振，快速切入代碼實作。",
+            "• 技術矩陣：方案比較表列出完整的技術棧對比、運作效能與工時預估。"
+        ]
+    )
+
+    # ==================== SLIDE 8: 打造 MAT 專屬的 AI 自動化工具庫 ====================
+    slide8 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide8, "05 / 亮點功能 02", "workflow-skill-creator：讓經驗重複使用")
+    
+    add_card(
+        slide8,
+        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
+        "做過一次，學會一輩子",
+        [
+            "• 經驗資產化：當你與 AI 合作成功完成了一套繁琐的實驗數據清洗、報告生成或文件處理流程，直接對它說「把我們剛剛做的事情建立成一個 Skill」。",
+            "• 永久複用：AI 會將此流程提煉、打包成結構化的指令與指令腳本。下次只需一句話，AI 就能瞬間以完全相同的標準為您重複執行該任務。"
+        ]
+    )
+    
+    add_card(
+        slide8,
+        Inches(6.8), Inches(2.0), Inches(5.8), Inches(2.2),
+        "工業級防護護欄 ── Rate Limiting",
+        [
+            "• 自動實作指數退避 (Exponential Backoff)，呼叫內部系統 API 時不怕造成負載，安全防封鎖。"
+        ]
+    )
+    
+    add_card(
+        slide8,
+        Inches(6.8), Inches(4.6), Inches(5.8), Inches(2.2),
+        "跨進程鎖 ── File-lock 安全防衝突",
+        [
+            "• 多個 AI 協同運行時自動共用進程鎖，避免讀寫衝突與代碼覆寫，展現強健的開發品質。"
+        ]
+    )
+
+    # ==================== SLIDE 9: 實戰演練課 ====================
     slide9 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide9, "06 / 協作指南", "Antigravity 的協作最佳實踐")
+    add_slide_decorations(slide9, "05 / 實戰演練", "MAT 同事專屬實戰練習課 (Lab Exercises)")
     
     add_card(
         slide9,
+        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
+        "練習 1：自建會議紀錄與 Outlook 串接",
+        [
+            "• 目標：建立一個名為 meeting-minutes 的自訂技能，實現多媒體資訊擷取與草稿自動化寫入。",
+            "• 核心功能要求：",
+            "  1. 擷取關鍵：從 MP4/MP3 會議錄音錄影檔或逐字稿中擷取決議事項與 Action Items 並整理成繁中會議紀錄。",
+            "  2. 串接 Outlook：自動尋找 Outlook 中對應時間或主題的會議，將會議紀錄自動寫入到該會議的郵件草稿中！",
+            "👉 請查閱講義 (walkthrough.md) 以複製完整的開發 Prompt！"
+        ]
+    )
+    
+    add_card(
+        slide9,
+        Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
+        "練習 2：MP4 轉 MP3 工具 (思考與實作)",
+        [
+            "• 目標：親自體驗「先規劃、後動手」的完整 Vibe Coding 協作開發流程。",
+            "• 實戰步驟：",
+            "  1. 啟動規劃：在對話框中輸入：",
+            "     👉 /brainstorm 我想開發一個 mp4 轉 mp3 小工具",
+            "  2. 自適應討論：選擇小白或半技術模式，與 AI 對齊假設，討論批次處理與 FFmpeg 套件相依性。",
+            "  3. 核准執行：核准計劃書後，AI 自動用 uv/venv 建立環境，撰寫程式並產出 walkthrough！"
+        ]
+    )
+
+    # ==================== SLIDE 10: 如何與 AI 隊友愉快協作？ ====================
+    slide10 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide10, "06 / 協作指南", "Antigravity 的協作最佳實踐")
+    
+    add_card(
+        slide10,
         Inches(0.6), Inches(2.0), Inches(3.7), Inches(4.8),
         "大招 /goal 指令",
         [
@@ -379,7 +396,7 @@ def main():
     )
     
     add_card(
-        slide9,
+        slide10,
         Inches(4.7), Inches(2.0), Inches(3.7), Inches(4.8),
         "神器 /browser 指令",
         [
@@ -389,7 +406,7 @@ def main():
     )
     
     add_card(
-        slide9,
+        slide10,
         Inches(8.8), Inches(2.0), Inches(3.7), Inches(4.8),
         "習慣 台灣繁體中文版控",
         [
@@ -399,7 +416,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction_v5.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v6.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 
