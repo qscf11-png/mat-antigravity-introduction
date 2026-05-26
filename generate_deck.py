@@ -338,12 +338,38 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 8: 如何與 AI 隊友愉快協作？ ====================
+    # ==================== SLIDE 8: 擴充功能分發與安裝指南 ====================
     slide8 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide8, "06 / 協作指南", "Antigravity 的協作最佳實踐")
+    add_slide_decorations(slide8, "05 / 功能分發", "擴充功能分發與安裝指南")
     
     add_card(
         slide8,
+        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
+        "哪些功能需要分享檔案？",
+        [
+            "• 原生自帶功能 (免分享檔案)：/goal (深度任務長跑模式) 與 /browser (線上資訊檢索)，軟體安裝好後直接在對話框中輸入即可，不需要任何額外檔案。",
+            "• 自訂擴充 Skill (需要分享檔案)：/brainstorm (引導式對齊與計劃書生成) 與 workflow-skill-creator (成功工作流自動打包)。同仁的電腦預設沒有這兩個功能，需手動安裝。"
+        ]
+    )
+    
+    add_card(
+        slide8,
+        Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
+        "分享來源與同仁貼上安裝路徑",
+        [
+            "• 分享來源 (已備份在專案中！)：直接將本專案目錄下 skills/ 目錄中的 brainstorm 與 workflow_skill_creator 兩個子資料夾打包，分享給同仁。",
+            "• 同仁安裝路徑：請同仁將解壓後的這兩個資料夾，複製貼至自己電腦的全域設定技能目錄：",
+            "  👉 C:\\Users\\<Username>\\.gemini\\config\\skills\\",
+            "• 生效方式：放好資料夾並重啟 Antigravity 後，即可在終端機直接輸入 /brainstorm 或進行工作流打包！"
+        ]
+    )
+
+    # ==================== SLIDE 9: 如何與 AI 隊友愉快協作？ ====================
+    slide9 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide9, "06 / 協作指南", "Antigravity 的協作最佳實踐")
+    
+    add_card(
+        slide9,
         Inches(0.6), Inches(2.0), Inches(3.7), Inches(4.8),
         "大招 /goal 指令",
         [
@@ -353,7 +379,7 @@ def main():
     )
     
     add_card(
-        slide8,
+        slide9,
         Inches(4.7), Inches(2.0), Inches(3.7), Inches(4.8),
         "神器 /browser 指令",
         [
@@ -363,7 +389,7 @@ def main():
     )
     
     add_card(
-        slide8,
+        slide9,
         Inches(8.8), Inches(2.0), Inches(3.7), Inches(4.8),
         "習慣 台灣繁體中文版控",
         [
@@ -373,7 +399,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction_v4.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v5.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 
