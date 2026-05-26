@@ -357,13 +357,14 @@ def main():
     add_card(
         slide9,
         Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
-        "練習 1：自建會議紀錄與 Outlook 串接",
+        "練習 1：以 workflow-skill-creator 提煉會議紀錄 Skill",
         [
-            "• 目標：建立一個名為 meeting-minutes 的自訂技能，實現多媒體資訊擷取與草稿自動化寫入。",
-            "• 核心功能要求：",
-            "  1. 擷取關鍵：從 MP4/MP3 會議錄音錄影檔或逐字稿中擷取決議事項與 Action Items 並整理成繁中會議紀錄。",
-            "  2. 串接 Outlook：自動尋找 Outlook 中對應時間或主題的會議，將會議紀錄自動寫入到該會議的郵件草稿中！",
-            "👉 請查閱講義 (walkthrough.md) 以複製完整的開發 Prompt！"
+            "• 目標：親自體驗 AI 技能提煉工具，將已完成的會議記錄與 Outlook 串接工作流打包為專屬 Skill。",
+            "• 實戰步驟 ── 一步步引導：",
+            "  1. 體驗工作流 (前置)：先與 Antigravity 手動跑通一次 MP4 會議紀錄擷取與寫入 Outlook 郵件草稿的任務。",
+            "  2. 啟動技能提煉：在對話框中直接對 AI 下達打包指令：",
+            "     👉 請幫我把剛剛完成的會議紀錄擷取與 Outlook 草稿寫入工作流，打包提煉成一個名為 meeting-minutes 的自訂 Skill！",
+            "  3. 經歷四輪對齊引導：AI 會一步步引導同仁討論輸入輸出、相依性與錯誤處理，最終自動生成完美的自訂 Skill！"
         ]
     )
     
@@ -416,7 +417,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction_v6.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v7.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 

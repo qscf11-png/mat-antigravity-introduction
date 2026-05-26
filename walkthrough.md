@@ -6,42 +6,51 @@
 
 ## 🎯 產出簡報下載與檢視
 
-您的最新定稿投影片檔案已經生成完畢，並複製到 Artifacts 目錄下。請直接點擊下方連結下載與開啟：
+您的最新定稿投影片檔案已經生成變更完畢，並複製到 Artifacts 目錄下。請直接點擊下方連結下載與開啟：
 
-👉 **[MAT_Antigravity_Introduction_v6.pptx (最終定稿版投影片)](file:///C:/Users/TK_Tsai/.gemini/antigravity/brain/cc4dc6c0-3eda-4eab-a71e-6bb7573eacb6/MAT_Antigravity_Introduction_v6.pptx)**
+👉 **[MAT_Antigravity_Introduction_v7.pptx (最終定稿版投影片)](file:///C:/Users/TK_Tsai/.gemini/antigravity/brain/cc4dc6c0-3eda-4eab-a71e-6bb7573eacb6/MAT_Antigravity_Introduction_v7.pptx)**
 
 ---
 
 ## 🎓 MAT 同事專屬：兩大實戰練習課 (Lab Exercises) 講義
 
-為了讓同仁在說明會後能立刻動手玩、親自感受 **Antigravity** 的強大威力，我們特別設計了兩大「實戰練習」，並為大家準備好可以直接複製貼上的 **黃金開發 Prompt**！
+為了讓同仁在說明會後能立刻動手玩、親自感受 **Antigravity** 經驗資產化的強大威力，我們特別設計了兩大「實戰練習」，並為大家準備好可以直接複製貼上的 **引導步驟與 Prompt**！
 
 ---
 
-### 📘 練習一：自建會議紀錄與 Outlook 郵件草稿串接 Skill
-*   **練習目標**：同仁將親自建立一個名為 `meeting-minutes` 的自訂技能，實現多媒體資訊擷取與 Outlook 草稿自動化寫入。
-*   **功能規範**：
-    1.  **關鍵擷取**：從會議錄音 (MP3)、錄影 (MP4) 檔或會議逐字稿文字檔中，精準擷取決議事項與 Action Items，並整理成繁體中文結構化的會議紀錄 Markdown。
-    2.  **串接 Outlook**：自動尋找 Microsoft Outlook 中對應時間或主題的會議，將該會議紀錄自動寫入到該會議的郵件草稿 (Email Draft) 中！
+### 📘 練習一：以 `workflow-skill-creator` 提煉會議紀錄與 Outlook 串接 Skill
+*   **練習目標**：同仁將親自體驗 Antigravity 的 **「技能自動打包工具」**。我們將把一段「已經手動做過且成功」的會議紀錄與 Outlook 草稿寫入對話，一步步提煉成一個名為 `meeting-minutes` 的自訂 Skill，讓以後一句話就能自動執行！
+*   **實戰步驟與引導流程**：
 
-#### 📝 同仁開發用的黃金 Prompt (直接複製貼給 Antigravity)：
+#### 🚀 步驟 1：體驗並手動完成一次工作流 (前置任務)
+同仁先在與 Antigravity 的日常對話中，合作完成一次「手動」提取 MP4 會議紀錄並手動把結果寫入 Outlook 郵件草稿的任務。
+
+#### 🚀 步驟 2：啟動技能提煉與打包 ── 在對話框中直接輸入：
 ```markdown
-我想開發一個名為 `meeting-minutes` 的自訂 Skill。
-請幫我建立對應 of SKILL.md 技能指南與輔助的 Python CLI 腳本。
-
-【核心功能需求】：
-1. 支援讀取會議逐字稿文字檔、MP3 音訊檔案、以及 MP4 影片檔案。從中精準擷取會議關鍵資訊（包含：會議主題、時間、出席者、核心決議事項、待辦 Action Items），並自動生成結構化且美觀的繁體中文會議紀錄 Markdown 報告。
-2. 整合微軟 Outlook 功能，能在 Outlook 郵件系統中尋找對應時間或特定主題的會議，並自動將剛生成的會議紀錄寫入到該會議的「郵件草稿 (Email Draft)」中，方便使用者確認後一鍵發送給所有出席同仁。
-
-【開發原則】：
-- 請先為我寫出完整的「實作計畫書 (Implementation Plan)」，待我確認核准後，再使用 uv 與 .venv 虛擬環境開始開發，絕不弄髒本機 Base 環境！
+請幫我把剛才完成的會議紀錄擷取與 Outlook 草稿寫入的完整工作流，建立並提煉成一個名為 `meeting-minutes` 的自訂 Skill！
 ```
 
-#### 🚀 開發與操作步驟引導：
-1.  **新建工作區**：在 `scratch/` 下建立一個子目錄，例如 `my_meeting_minutes_skill`，並在 VS Code 中開啟它。
-2.  **投遞 Prompt**：將上述 Prompt 貼入 Antigravity 聊天框中。
-3.  **確認計畫**：審查 AI 產出的 `implementation_plan.md`，輸入「同意」。
-4.  **自動開發**：AI 會自動使用 `uv` 建立虛擬環境，安裝需要的套件（如用 Python 串接 Outlook API 或文字處理庫），自律完成開發。
+#### 🚀 步驟 3：體驗四輪引導對齊 (AI 與您的 back-and-forth 討論)
+`workflow-skill-creator` 會主動開啟引導式 Brainstorming。請同仁配合以下對話：
+1.  **第一輪 ── 確認工作流與輸入輸出**：
+    *   *AI 會詢問*：「我理解剛才的工作流輸入是 MP4 影音檔與 Outlook 會議主題，輸出是 Outlook 郵件草稿。這是否準確？有什麼要修改的？」
+    *   *您的回應*：`是的，完全準確，請繼續！`
+2.  **第二輪 ── 彈性與錯誤處理**：
+    *   *AI 會詢問*：「如果在執行過程中 Outlook API 斷線或連不上，您希望 AI 是：(a) 停下來詢問您、(b) 自動嘗試其他重連方案、還是 (c) 直接大聲報錯？」
+    *   *您的推薦回應*：`請選 (b)，自動嘗試重連，如果失敗 3 次再停下來詢問我。`
+3.  **第三輪 ── 相依性與資源**：
+    *   *AI 會詢問*：「這個 Skill 會用到我們科學工具包裡的影音提取功能，我會直接引用它。另外，Outlook API 有每分鐘呼叫限制，我會自動實作 Rate Limiting，可以嗎？」
+    *   *您的回應*：`好的，沒問題！`
+4.  **第四輪 ── 決定工具結構 (CLI 腳本模式)**：
+    *   *AI 會分析*：「因為這個工作流包含程式碼與 Outlook 整合，我建議為您建立一個 Python CLI 輔助腳本，內建 `parse` (解析影音) 與 `draft` (寫入草稿) 子命令。您不需寫任何程式，我會全部處理。這聽起來對嗎？」
+    *   *您的回應*：`是的，這太棒了，請開始！`
+
+#### 🚀 步驟 4：核准並自動生成 Skill
+AI 將會為您展示 `meeting-minutes` 的設計方案與目錄結構。此時，同仁只要在對話框輸入：
+```markdown
+同意，請開始執行！
+```
+Antigravity 就會自動使用 `uv` 建立虛擬環境、下載影音套件、自律編寫腳本代碼與 `SKILL.md` 指南，並自動跑通測試，將這個複雜的工作流完美封裝成您專屬的自訂技能！
 
 ---
 
@@ -56,7 +65,7 @@
 
 #### 🚀 步驟 2：自適應對話對齊：
 *   AI 啟動 brainstorm 機制後，會主動詢問您溝通模式。請選擇 **「🟢 小白模式」** 或 **「🟡 半技術模式」**。
-*   AI 會列出它對這個小工具的假設（例如：支援單檔轉換、是否需要支援批次轉換、套件相依性等），並與您對齊理解。
+*   AI 會列出它對這個小工具的假設（例如：支援單檔轉換、是否支援批次轉換、套件相依性等），並與您對齊理解。
 
 #### 🚀 步驟 3：核准並自動實作：
 *   對齊理解後，AI 會自動在 `plans/` 資料夾下為您生成一份精密的實作計劃書（Markdown）。
@@ -75,7 +84,7 @@
 *   **`/browser` 指令** ── 啟動線上瀏覽功能，引導 AI 上網搜尋最新文獻與 API 官方文檔。
 
 ### 2. 🛠️ 自訂擴充 Skill (需要由您分享檔案，貼到指定位置)
-這兩者是我們為 Antigravity 特別編寫與擴充的 **「自訂技能 (Skills)」**。同仁的電腦預設**沒有**這兩個功能。您必須將您電腦中的 **Skill 資料夾** 分享給他們，並請他們放到對應路徑下，方可加載生效：
+這兩者是我們為 Antigravity 特別編寫與擴充的 **「自訂技能 (Skills)」**。同仁的電腦預設**開箱**沒有這兩個功能。您必須將您電腦中的 **Skill 資料夾** 分享給他們，並請他們放到對應路徑下，方可加載生效：
 *   **`/brainstorm`** (引導式需求釐清與計劃書生成)
 *   **`workflow-skill-creator`** (將成功工作流自動打包成可複用 Skill)
 
@@ -94,7 +103,7 @@
 
 ## 💡 Antigravity 的全域協作規範 (Global Rules) 與設定方法
 
-為了讓您的 Antigravity 虛擬隊友與您的開發習慣完美同頻，您為系統設定了極起嚴謹的 **Global Rules**。以下是這些 Rules 的核心內容與設定教學，這非常適合直接分享給 MAT 的同事：
+為了讓您的 Antigravity 虛擬隊友與您的開發習慣完美同頻，您為系統設定了極其嚴謹的 **Global Rules**。以下是這些 Rules 的核心內容與設定教學，這非常適合直接分享給 MAT 的同事：
 
 ### 1. 您的全域設定 Prompt (Global Rules) 原始內容
 ```markdown
@@ -102,7 +111,7 @@
  
 - 預設語言：繁體中文（請以繁體中文回應自然語言與文件內容），包括你自己的思考過程(thinking process)，都使用繁體中文和自己交談
 - 文件（README、CLAUDE.md、commit message 等）預設使用繁體中文
-- 程式碼本體保留原始語言，但註解、說明與 docstring 請使用繁體中文
+- 程式碼本體保留原始語言，但註注、說明與 docstring 請使用繁體中文
 - 如果要使用python開發程式，一定要使用 uv, .venv 建立環境，千萬不要用到base及單獨使用pip，不要弄髒我的環境
 - 自動產生 git commit messages/comments時，一律使用繁體中文台灣用語
 - Agent 產生的 implementation.plan*, task.md*, walkthrought.md*，全部用繁體中文台灣用語
@@ -160,7 +169,7 @@
 6.  **Slide 6：5分鐘現場 Demo 流程 (步進流程)** ─ 以 4 步驟小卡片串接，清晰呈現從對齊需求到產出 Walkthrough 的 Demo 動線。
 7.  **Slide 7：動手前先想清楚：/brainstorm (對稱卡片)** ─ 深度介紹 **🟢 小白模式** (無門檻、成果導向) 與 **🔴 工程師模式** 的自適應彈性。
 8.  **Slide 8：打造 MAT 專屬工具庫 (矩陣排版)** ─ 介紹 `workflow-skill-creator` 如何將經驗提煉成 Skill，並介紹內建的 `Rate Limiting` 與 `File-lock` 防護。
-9.  **Slide 9：MAT 同事專屬實戰練習課 (雙卡片排版)** ─ 自建會議紀錄與 Outlook 郵件草稿串接 Skill、MP4 轉 MP3 命令行小工具開發實戰。
+9.  **Slide 9：MAT 同事專屬實戰練習課 (雙卡片排版)** ─ 🌟 **[重構]** 以 `workflow-skill-creator` 提煉會議紀錄與 Outlook 郵件草稿串接 Skill、MP4 轉 MP3 命令行小工具開發實戰。
 10. **Slide 10：協作最佳實踐 (三欄卡片)** ─ 指導同事善用 `/goal`、`/browser` 指令，以及台灣用語版控習慣。
 
 ---
@@ -171,5 +180,5 @@
 *   **虛擬環境隔離**：專案透過 **`uv` 與 `.venv`** 初始化。`python-pptx` 等相依套件全數安裝在該專屬虛擬環境中，保證主機 Base 環境完全不被弄髒。
 *   **自動化版本控管 (gh CLI)**：
     *   使用 `git` 進行版控，並自動使用台灣繁體中文撰寫 Git commit message (`feat: 徹底正名規則檔為 GEMINI.md，新增全域設定路徑，並發布 v4 定稿投影片`)。
-    *   使用 **GitHub CLI (`gh`)** 在遠端自動建立公開 Repo並成功推送代碼。
+    *   使用 **GitHub CLI (`gh`)** 在遠端自動建立公開 Repo 並成功推送代碼。
     *   遠端儲存庫連結：[mat-antigravity-introduction (GitHub)](https://github.com/qscf11-png/mat-antigravity-introduction)
