@@ -208,13 +208,39 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 4: 5分鐘現場 Demo 流程 ====================
+    # ==================== SLIDE 4: 自訂協作規範 ====================
     slide4 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide4, "03 / 實戰展示", "Demo 現場：5分鐘見證 AI 自主開發")
+    add_slide_decorations(slide4, "02 / 自訂規範", "MAT 團隊的 AI 協作自訂規範 (Global Rules)")
+    
+    add_card(
+        slide4,
+        Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
+        "MAT 團隊目前採用的全域偏好 (Rules)",
+        [
+            "• 繁中與台灣用語：討論過程、內部思考、程式註解、變更報告與 Commit Message 一律使用台灣繁體中文用語。",
+            "• 隔離虛擬環境：開發 Python 程式時，強制使用 uv 搭配 .venv 管理環境，絕不在 Base 下跑 Python，保護主機環境。",
+            "• 版控與分支安全：首版自動使用 gh 建立公開儲存庫上傳，有重大功能異動自動切換獨立分支，確認後再合併。"
+        ]
+    )
+    
+    add_card(
+        slide4,
+        Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
+        "如何讓大家的 AI 隊友都套用此規範？",
+        [
+            "• 方法 A ── 專案級 CLAUDE.md (最推薦！)：在專案根目錄下建立 CLAUDE.md 檔案，寫入這些開發偏好與常用命令。AI 每次讀取專案都會自動載入並無條件遵守，極利於團隊協作分享。",
+            "• 方法 B ── IDE 擴充套件自訂指令：在 VS Code 的 Cline / Roo Code 擴充套件設定中，將 Rules 直接貼入 Custom Instructions 欄位中。",
+            "• 方法 C ── 全域 CLI 設定：將 Rules 寫入個人家目錄下的全域設定檔 (如 ~/.clauderc)，讓每次啟動 AI 時自動生效。"
+        ]
+    )
+
+    # ==================== SLIDE 5: 5分鐘現場 Demo 流程 ====================
+    slide5 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide5, "03 / 實戰展示", "Demo 現場：5分鐘見證 AI 自主開發")
     
     # 4個步驟小卡片
     add_card(
-        slide4,
+        slide5,
         Inches(0.6), Inches(2.0), Inches(2.75), Inches(4.8),
         "1. 引導對齊",
         [
@@ -224,7 +250,7 @@ def main():
     )
     
     add_card(
-        slide4,
+        slide5,
         Inches(3.6), Inches(2.0), Inches(2.75), Inches(4.8),
         "2. 核准實作計畫",
         [
@@ -234,7 +260,7 @@ def main():
     )
     
     add_card(
-        slide4,
+        slide5,
         Inches(6.6), Inches(2.0), Inches(2.75), Inches(4.8),
         "3. 自律虛擬執行",
         [
@@ -243,7 +269,7 @@ def main():
     )
     
     add_card(
-        slide4,
+        slide5,
         Inches(9.6), Inches(2.0), Inches(2.75), Inches(4.8),
         "4. 成果驗證",
         [
@@ -251,12 +277,12 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 5: 動手前先想清楚：/brainstorm ====================
-    slide5 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide5, "04 / 亮點功能 01", "動手前先想清楚：/brainstorm")
+    # ==================== SLIDE 6: 動手前先想清楚：/brainstorm ====================
+    slide6 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide6, "04 / 亮點功能 01", "動手前先想清楚：/brainstorm")
     
     add_card(
-        slide5,
+        slide6,
         Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
         "🟢 小白模式 (推薦非技術同事)",
         [
@@ -267,7 +293,7 @@ def main():
     )
     
     add_card(
-        slide5,
+        slide6,
         Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
         "🔴 工程師模式 (高效率開發)",
         [
@@ -277,13 +303,13 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 6: 打造 MAT 專屬的 AI 自動化工具庫 ====================
-    slide6 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide6, "05 / 亮點功能 02", "workflow-skill-creator：讓經驗重複使用")
+    # ==================== SLIDE 7: 打造 MAT 專屬的 AI 自動化工具庫 ====================
+    slide7 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide7, "05 / 亮點功能 02", "workflow-skill-creator：讓經驗重複使用")
     
     # 左側大卡片
     add_card(
-        slide6,
+        slide7,
         Inches(0.6), Inches(2.0), Inches(5.8), Inches(4.8),
         "做過一次，學會一輩子",
         [
@@ -294,7 +320,7 @@ def main():
     
     # 右上卡片
     add_card(
-        slide6,
+        slide7,
         Inches(6.8), Inches(2.0), Inches(5.8), Inches(2.2),
         "工業級防護護欄 ── Rate Limiting",
         [
@@ -304,7 +330,7 @@ def main():
     
     # 右下卡片
     add_card(
-        slide6,
+        slide7,
         Inches(6.8), Inches(4.6), Inches(5.8), Inches(2.2),
         "跨進程鎖 ── File-lock 安全防衝突",
         [
@@ -312,12 +338,12 @@ def main():
         ]
     )
 
-    # ==================== SLIDE 7: 如何與 AI 隊友愉快協作？ ====================
-    slide7 = prs.slides.add_slide(blank_layout)
-    add_slide_decorations(slide7, "06 / 協作指南", "Antigravity 的協作最佳實踐")
+    # ==================== SLIDE 8: 如何與 AI 隊友愉快協作？ ====================
+    slide8 = prs.slides.add_slide(blank_layout)
+    add_slide_decorations(slide8, "06 / 協作指南", "Antigravity 的協作最佳實踐")
     
     add_card(
-        slide7,
+        slide8,
         Inches(0.6), Inches(2.0), Inches(3.7), Inches(4.8),
         "大招 /goal 指令",
         [
@@ -327,7 +353,7 @@ def main():
     )
     
     add_card(
-        slide7,
+        slide8,
         Inches(4.7), Inches(2.0), Inches(3.7), Inches(4.8),
         "神器 /browser 指令",
         [
@@ -337,7 +363,7 @@ def main():
     )
     
     add_card(
-        slide7,
+        slide8,
         Inches(8.8), Inches(2.0), Inches(3.7), Inches(4.8),
         "習慣 台灣繁體中文版控",
         [
@@ -347,7 +373,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v2.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 
