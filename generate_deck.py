@@ -226,11 +226,11 @@ def main():
     add_card(
         slide4,
         Inches(6.8), Inches(2.0), Inches(5.8), Inches(4.8),
-        "如何讓大家的 AI 隊友都套用此規範？",
+        "如何讓大家的 Antigravity 都套用此規範？",
         [
-            "• 方法 A ── 專案級 CLAUDE.md (最推薦！)：在專案根目錄下建立 CLAUDE.md 檔案，寫入這些開發偏好與常用命令。AI 每次讀取專案都會自動載入並無條件遵守，極利於團隊協作分享。",
-            "• 方法 B ── IDE 擴充套件自訂指令：在 VS Code 的 Cline / Roo Code 擴充套件設定中，將 Rules 直接貼入 Custom Instructions 欄位中。",
-            "• 方法 C ── 全域 CLI 設定：將 Rules 寫入個人家目錄下的全域設定檔 (如 ~/.clauderc)，讓每次啟動 AI 時自動生效。"
+            "• 方法 A ── 專案級 CLAUDE.md (最推薦！)：在專案根目錄下建立 CLAUDE.md 檔案，寫入這些開發偏好與常用命令。Antigravity 在解析工作區時會自動載入並 100% 遵守，極利於團隊協作分享。",
+            "• 方法 B ── 系統全域 User Rules 設定：直接在 Antigravity 客戶端設定的 User Rules (自訂規則) 欄位中貼上這些 Rules，即可跨專案自動套用您的個人開發偏好。",
+            "• 方法 C ── 全域組態設定檔：將 Rules 寫入個人 AppData 家目錄下的 Antigravity 全域組態設定檔中，讓每次啟動與執行時自動加載生效。"
         ]
     )
 
@@ -373,7 +373,7 @@ def main():
     )
 
     # 4. 存檔
-    output_filename = "MAT_Antigravity_Introduction_v2.pptx"
+    output_filename = "MAT_Antigravity_Introduction_v3.pptx"
     prs.save(output_filename)
     print(f"Success! PPTX file generated successfully: {output_filename}")
 
